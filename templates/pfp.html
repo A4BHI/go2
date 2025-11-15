@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <main class="flex-grow-1 p-4" id="main">
+
+            <!-- DESKTOP TOGGLE BUTTON -->
+            <button class="btn btn-outline-primary mb-3 d-none d-lg-inline"
+                data-bs-toggle="collapse"
+                data-bs-target="#sidebarCollapseWrapper">
+
+                <i class="bi bi-list"></i>
+            </button>
+
+            <h2>Dashboard Content</h2>
+            <p>
+                {{.Data}}
+            </p>
+
+        </main>
+
+</body>
+</html>
