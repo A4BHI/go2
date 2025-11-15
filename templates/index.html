@@ -66,21 +66,30 @@
 
                 <i class="bi bi-list"></i>
             </button>
-
-            <div class="container d-flex justify-content-center align-items-center bg-dark-subtle">
-                <div class="row">
-
-                    <h2 class="col-12 d-flex justify-content-center align-items-center">
+             <h2 class=" d-flex justify-content-center align-items-center">
                     YOUR URL'S
                 </h2>
+
+            <div class="container  bg-dark-subtle">
+                <div class="row">
+
+                   
+                </div>
+                <div class="row border border-info">
+                    <div class="col-1 border border-primary">ID</div>
+                    <div class="col-4 border border-primary">SHORTEN URL</div>
+                    <div class="col-5 border border-primary">FULL URL</div>
+                    <div class="col-2 border border-primary">VIEW ANALYTICS</div>
                 </div>
                 <div class="row">
                      <div class="col-12 ">
-                    <ul class="list-group ">
-                    <li class="list-group-item bg-primary">fdsdfd</li>
+                    
                     {{range .Urls}}
-                        <li class="list-group-item bg-primary">{{.url}}</li>
-                        <li class="list-group-item bg-primary">fdsdfd</li>
+                        <div class="col-1 border border-primary">ID</div>
+                    <div class="col-4 border border-primary">SHORTEN URL</div>
+                    <div class="col-5 border border-primary">FULL URL</div>
+                    <div class="col-2 border border-primary">VIEW ANALYTICS</div>
+                        
                     {{end}}
                 </ul>
                 </div>
