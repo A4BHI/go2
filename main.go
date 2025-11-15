@@ -7,15 +7,35 @@ import (
 func main() {
 	r := gin.Default()
 	r.LoadHTMLGlob("templates/*")
-	r.GET("/ping", func(ctx *gin.Context) {
+	data := []gin.H{
+		{
+			"ID":    1,
+			"SHORT": "localhost:8080/a1b2",
+			"ORG":   "https://google.com",
+		},
+		{
+			"ID":    2,
+			"SHORT": "localhost:8080/x9y8",
+			"ORG":   "https://youtube.com",
+		},
+	}
+	r.GET("/", func(ctx *gin.Context) {
 
-		ctx.HTML(200, "index.html", nil)
+		ctx.HTML(200, "index.html", gin.H{
+			"Urls": data,
+		})
+	})
+
+	r.GET("/test", func(ctx *gin.Context) {
+		ctx.HTML(200, "test.html", gin.H{
+			"Urls": data,
+		})
 	})
 
 	r.GET("/pfp", func(ctx *gin.Context) {
-		name := "Abhijith"
+		// name := "Abhijith"
 		ctx.HTML(200, "pfp.html", gin.H{
-			"Data": name,
+			"Name": "Abhijith",
 		})
 	})
 	r.Run()

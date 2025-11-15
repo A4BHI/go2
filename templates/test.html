@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+          <!-- DESKTOP TOGGLE BUTTON -->
+            <button class="btn btn-outline-primary mb-3 d-none d-lg-inline"
+                data-bs-toggle="collapse"
+                data-bs-target="#sidebarCollapseWrapper">
+
+                <i class="bi bi-list"></i>
+            </button>
+           
+             <h2 class=" d-flex justify-content-center align-items-center">
+                    YOUR URL'S
+                </h2>
+
+            <div class="table-responsive">
+            <table class="table table-bordered border border-danger-subtle" >
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Short URL</th>
+                        <th>Full URL</th>
+                        <th>Analytics</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {{ range .Urls }}
+                    <tr>
+                        <td>{{ .ID }}</td>
+                        <td>{{ .SHORT }}</td>
+                        <td>{{ .ORG }}</td>
+                        <td class="d-flex justify-content-center align-items-center"><button class="btn btn-sm btn-primary">VIEW</button></td>
+                    </tr>
+                {{ end }}
+                </tbody>
+            </table>
+            </div>
+
+
+            <p>
+                
+            </p>
+
+</body>
+</html>
