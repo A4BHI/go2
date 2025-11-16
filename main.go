@@ -1,6 +1,9 @@
 package main
 
 import (
+	"fmt"
+	"go2/addurls"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -39,5 +42,11 @@ func main() {
 			"Name": "Abhijith",
 		})
 	})
+	r.POST("/addurl", func(ctx *gin.Context) {
+		url := ctx.Request.FormValue("url")
+		fmt.Println(url)
+		addurls.ShortCode()
+	})
 	r.Run()
+
 }
