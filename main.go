@@ -6,7 +6,8 @@ import (
 
 func main() {
 	r := gin.Default()
-	r.LoadHTMLGlob("templates/*")
+	r.LoadHTMLGlob("templates/*.html")
+	r.Static("/images", "./images")
 	data := []gin.H{
 		{
 			"ID":    1,
