@@ -3,11 +3,15 @@ package main
 import (
 	"fmt"
 	"go2/addurls"
+	"go2/db"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+
+	db.Connect()
+
 	r := gin.Default()
 	r.LoadHTMLGlob("templates/*.html")
 	r.Static("/images", "./images")
