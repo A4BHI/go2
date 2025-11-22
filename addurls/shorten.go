@@ -3,6 +3,7 @@ package addurls
 import (
 	"context"
 	"crypto/rand"
+	"fmt"
 	"go2/db"
 	"math/big"
 )
@@ -20,8 +21,13 @@ func ShortCode() string {
 
 }
 
-func Url() {
+func Url(url string) string {
 	code := ShortCode()
+	username := "admin"
+	_, err := db.Pool.Exec(context.Background(), "insert into links (username ,short_code,org_link) values ($1,$2,$3)", username, code, url)
+	if err != nil {
+		fmt.Println(err)
+	}
 
-	db.Pool.Exec(context.Background(), "insert into links (username ,short_code,org_link,) values (?,?,?)", code)
+	return code
 }
