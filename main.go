@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"go2/addurls"
 	"go2/db"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -46,6 +47,15 @@ func main() {
 		url := ctx.Request.FormValue("url")
 		fmt.Println(url)
 		code := addurls.Url(url)
+		var id int
+		db.Pool.QueryRow(context.Background(), "select id from links where short_code=$1", code).Scan(&id)
+
+		data := gin.H{
+			"ID":    id,
+			"SHORT": "localhost:8080/" + code,
+			"ORG":   url,
+		}
+		ctx.HTML(http.StatusOK, "row.html", data)
 
 	})
 
