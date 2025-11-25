@@ -6,9 +6,16 @@ import (
 	"go2/addurls"
 	"go2/db"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 )
+
+type Links struct {
+	ID    int
+	SHORT string
+	ORG   string
+}
 
 func main() {
 
@@ -17,20 +24,22 @@ func main() {
 	r := gin.Default()
 	r.LoadHTMLGlob("templates/*.html")
 	r.Static("/images", "./images")
-	data := []gin.H{
-		{
-			"ID":    1,
-			"SHORT": "localhost:8080/a1b2",
-			"ORG":   "https://google.com",
-		},
-		{
-			"ID":    2,
-			"SHORT": "localhost:8080/x9y8",
-			"ORG":   "https://youtube.com",
-		},
-	}
-	r.GET("/", func(ctx *gin.Context) {
+	data := []Links{}
 
+	r.GET("/", func(ctx *gin.Context) {
+		var id int
+		var org string
+		var short string
+		rows, err := db.Pool.Query(context.Background(), "select id,short_code,org_link from links where username=$1", "admin")
+		if err != nil {
+			gin.LoggerWithWriter(os.Stdout, "Error in executing")
+		}
+
+		for rows.Next() {
+			rows.Scan(&id, &org, &short)
+			data = append(data, Links{ID: id, SHORT: short, ORG: org})
+		}
+		fmt.Println(data)
 		ctx.HTML(200, "index.html", gin.H{
 			"Urls": data,
 		})
