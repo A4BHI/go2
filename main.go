@@ -82,7 +82,7 @@ func main() {
 			return
 		}
 
-		ctx.Redirect(302, orglink)
+		ctx.Redirect(302, "https://"+orglink)
 	})
 	r.Run()
 
