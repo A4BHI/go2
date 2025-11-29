@@ -36,7 +36,7 @@ func main() {
 		}
 
 		for rows.Next() {
-			rows.Scan(&id, &org, &short)
+			rows.Scan(&id, &short, &org)
 			data = append(data, Links{ID: id, SHORT: short, ORG: org})
 		}
 		fmt.Println(data)
