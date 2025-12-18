@@ -84,6 +84,10 @@ func main() {
 
 		ctx.Redirect(302, "https://"+orglink)
 	})
+
+	r.POST("/analytics", func(ctx *gin.Context) {
+
+	})
 	r.Run()
 
 }
