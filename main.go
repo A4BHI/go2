@@ -37,7 +37,7 @@ func main() {
 
 		for rows.Next() {
 			rows.Scan(&id, &short, &org)
-			data = append(data, Links{ID: id, SHORT: short, ORG: org})
+			data = append(data, Links{ID: id, SHORT: "go2.a4sys.in/" + short, ORG: org})
 		}
 		fmt.Println(data)
 		ctx.HTML(200, "index.html", gin.H{
