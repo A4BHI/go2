@@ -77,7 +77,7 @@ func main() {
 		err := row.Scan(&orglink)
 
 		if err != nil {
-			fmt.Println("Error occured in the redirecting function: ", err)
+			fmt.Println("Error in the redirecting function: ", err)
 			ctx.String(404, "Invalid or Expired link")
 			return
 		}
